@@ -1,3 +1,7 @@
 Start: 10:00 am
 end: 12:00 pm
 Task: Set up outline for all apges, completed add item page. Insertion works.
+
+Start: 2:00 pm
+End: 3:30 pm
+Task: Finished basic user and database interactions for all pages, all page links are set.

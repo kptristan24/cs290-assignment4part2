@@ -28,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://people.oregonstate.edu/~harit/cs_290/cs290-assignment4part1">Assignment 4</a>
+          <a class="navbar-brand" href="http://people.oregonstate.edu/~harit/cs_290/cs290-assignment4part2">Assignment 4</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -70,7 +70,7 @@
 		
 <?php
 	if(isset($_POST["name"])){
-		echo $_POST["name"];
+		echo '<div class="alert alert-success" role="alert"><strong>Hooray!</strong> Movie successfully submitted :)</div>';
 		
 		$name = $_POST['name'];
 		$category = $_POST['category'];
