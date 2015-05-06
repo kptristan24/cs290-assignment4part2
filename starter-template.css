@@ -1,0 +1,23 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+#gists {
+	background-color: #A8A8B0;
+	float: left;
+	width: 40%;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#favored-gists {
+	background-color: #b2d9ff;
+	float: right;
+	width: 40%;
+	padding-left: 10px;
+	padding-right: 10px;
+}
