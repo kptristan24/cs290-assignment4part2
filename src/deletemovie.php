@@ -47,14 +47,34 @@
 		<br><br>
 		<div class="jumbotron">
 			<h1>Delete All movies!</h1>
-			<p>Here you can delete ALL movies in the database. Note that this action is irreversible, so be sure before clicking the button bellow.</p>
+			<p>Here you can delete ALL movies in the database. Note that this action is irreversible, so be sure before clicking the button bellow. Use the dropdown to delete individual titles from the database.</p>
 			<form action="deletemovie.php" method="post">
 				<input type="hidden" name="deleteall" class="form-control" aria-describedby="basic-addon1">
 			<button class="btn btn-primary btn-lg" type="submit">Delete</button>
 			</form>
 		</div>
 		
-		
+		<br>
+		<form action="deletemovie.php" method="post">
+		<select name="deletetitle" >
+		<?php
+			$sql = "SELECT DISTINCT name FROM Movies;";
+			
+			
+			echo '<option value="-1">Select a Category:</option>';
+			$query = $pdo->prepare($sql);
+			$result = $query->execute();
+			
+			foreach($pdo->query($sql) as $row){
+			
+				echo '<option value="' . $row['name'] . '">' . $row['name'] . '</option>';
+			}
+			
+		?>
+
+		  </select>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
 		
 		
 <?php
@@ -65,6 +85,17 @@
 
 		$sql = "TRUNCATE TABLE Movies;";
 
+		$delete = $pdo->prepare($sql);
+		$delete->execute();
+	
+	}
+	if(isset($_POST["deletetitle"])){
+		echo '<div class="alert alert-success" role="alert"><strong>C\'est Fini!</strong> Movie successfully deleted :)</div>';
+		
+		//$1sql = "INSERT INTO Items (item_name, item_level, slot, primary_stat) VALUES ('".$item_name."','".$item_level."','".$slot."','".$primary_stat."')";
+
+		$sql = "DELETE FROM Movies WHERE name='" . $_POST["deletetitle"] . "';";
+		echo $sql;
 		$delete = $pdo->prepare($sql);
 		$delete->execute();
 	

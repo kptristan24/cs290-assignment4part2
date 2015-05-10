@@ -19,6 +19,24 @@
 
   <body>
 
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../favicon.ico">
+	<script src="myscripts.js"></script>
+
+    <title>MySQL and PHP</title>
+    <link href="../../../libraries/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../starter-template.css" type="text/css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -40,7 +58,6 @@
         </div>
       </div>
     </nav>
-
     <div class="container">
 
 
@@ -63,7 +80,7 @@
 		</div><br>
 		<div class="input-group">
 			<span class="input-group-addon" id="basic-addon1">Length(minutes)</span>
-				<input type="text" name="length" class="form-control" placeholder="60, 90, 120" aria-describedby="basic-addon1" required>
+				<input type="number" name="length" class="form-control" placeholder="60, 90, 120" aria-describedby="basic-addon1" min="1" required>
 		</div><br>
 		<button type="submit" class="btn btn-default">Submit</button>
 		</form><br><br>

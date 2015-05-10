@@ -1,48 +1,16 @@
 <?php include 'dbconn.php'; ?>
 
+<?php
+	function tryme(){
+		echo '<br><br><br>I lold<br><br>';
+		
+	}
 
-
-
-
+?>
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
-  <script>
-function showUser(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else { 
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-            }
-        }
-		
-        xmlhttp.open("GET","getuser.php?q="+str,true);
-        xmlhttp.send();
-    }
-}
-
-</script>
-
-<script>
-window.onload = function () {
-	showUser(-1);
-};
-</script>
-  
-  
-  
-  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,28 +59,46 @@ window.onload = function () {
 			<p>Here you can view ALL movies in the database. You may sort by category using the dropdown.</p>
 
 		</div>
-		<form>
-		<select name="users" onchange="showUser(this.value)">
-		<?php
-			$sql = "SELECT DISTINCT category FROM Movies;";
-			
-			
-			echo '<option value="-1">Select a Category:</option>';
-			$query = $pdo->prepare($sql);
-			$result = $query->execute();
-			
-			foreach($pdo->query($sql) as $row){
-			
-				echo '<option value="' . $row['category'] . '">' . $row['category'] . '</option>';
-			}
-			
-		?>
-
-		  </select>
-		</form>
-		<br>
-		<div id="txtHint"><b>Person info will be listed here...</b></div>	
-
+		
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    All <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" onchange="tryme();">
+    <li><a href="#">All</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+  </ul>
+</div>
+		
+		<div class="container-fluid">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Category</th>
+						<th>Length</th>
+						<th>Checked Out</th>
+					</tr>
+				</thead>
+				<tbody>	
+			<?php
+				$sql = "SELECT name, category, length, rented FROM Movies;";
+				foreach($pdo->query($sql) as $row){
+					echo '<tr>';
+						echo '<td>' . $row['name'] . '</td>';
+						echo '<td>' . $row['category'] . '</td>';
+						echo '<td>' . $row['length'] . '</td>';
+						echo '<td>' . $row['rented'] . '</td>';
+						
+					echo '</tr>';
+				};
+			?>
+				</tbody>
+			</table>
+		</div>
+		
+		
 		</body>
 		
 		
