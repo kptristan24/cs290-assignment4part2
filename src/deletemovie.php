@@ -61,7 +61,7 @@
 			$sql = "SELECT DISTINCT name FROM Movies;";
 			
 			
-			echo '<option value="-1">Select a Category:</option>';
+			echo '<option value="-1">Select a Title:</option>';
 			$query = $pdo->prepare($sql);
 			$result = $query->execute();
 			
@@ -95,7 +95,7 @@
 		//$1sql = "INSERT INTO Items (item_name, item_level, slot, primary_stat) VALUES ('".$item_name."','".$item_level."','".$slot."','".$primary_stat."')";
 
 		$sql = "DELETE FROM Movies WHERE name='" . $_POST["deletetitle"] . "';";
-		echo $sql;
+		//echo $sql;
 		$delete = $pdo->prepare($sql);
 		$delete->execute();
 	

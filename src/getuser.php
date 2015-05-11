@@ -1,3 +1,4 @@
+<?php include 'dbconn.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,17 @@
 <body>
 
 <?php
+
+$sql = "UPDATE Movies SET rented='" . $_POST['rent'] . "' WHERE name='" . $_POST['name'] . "'; ";
+$query = $pdo->prepare($sql);
+$query->execute();
+
+if(isset($_GET["rent"])){
+//echo ' aids ';
+}
+//echo '<br>' . $_GET["rent"];
+
+//echo $sql;
 $q = $_GET['q'];
 
 
@@ -23,6 +35,7 @@ if($q == -1){
 }
 
 $result = mysqli_query($con,$sql);
+//echo '<form action="viewmovie.php" method="get"><input type="hidden" name="rent" value="1" class="form-control" aria-describedby="basic-addon1"><button class="btn btn-default" type="submit">Rent</button></td>';
 
 //echo '<br><br>I got: ' . $q;
 
@@ -42,7 +55,17 @@ while($row = mysqli_fetch_array($result)) {
 		echo "<td>" . $row['name'] . "</td>";
 		echo "<td>" . $row['category'] . "</td>";
 		echo "<td>" . $row['length'] . "</td>";
-		echo "<td>" . $row['rented'] . "</td>";
+		if($row['rented'] == 0){
+			echo '<td><form action="viewmovie.php" method="post">
+					<input type="hidden" name="rent" value="1" class="form-control" aria-describedby="basic-addon1">
+					<input type="hidden" name="name" value= ' . $row['name'] . 'class="form-control" aria-describedby="basic-addon1">
+					<button class="btn btn-default" type="submit">Rent</button></td>';
+		}elseif($row['rented'] == 1){
+			echo "<td><button>Available</button></td>";
+		}
+		//echo "<td>" . $row['rented'] . "</td>";
+		
+		
 		echo "</tr>";
 }
 echo "</tbody></table></div>";
