@@ -1,12 +1,16 @@
-Start: 10:00 am
-end: 12:00 pm
+Start: Wednesday 10:00 am
+end:  Wednesday 12:00 pm
 Task: Set up outline for all apges, completed add item page. Insertion works.
 
-Start: 2:00 pm
-End: 3:30 pm
+Start: Wednesday 2:00 pm
+End: Wednesday 3:30 pm
 Task: Finished basic user and database interactions for all pages, all page links are set.
 
-sat
-Start: 10
-End: 12
-Task: Added delete interactionsandform control.
+
+Start: Saturday 10:00 pm
+End: Saturday 12:00 pm
+Task: Added delete interactions and form control.
+
+Start: Sunday 10:00 pm
+End: Sunday 12:00 pm
+Task: Added final touches and completed DB interactions. Was unable to complete checkout function.
